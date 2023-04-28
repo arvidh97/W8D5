@@ -46,7 +46,7 @@ Board.prototype.isValidPos = function (pos) {
   let x = pos[0]
   let y = pos[1]
 
-  if ((x > 0 && x < 7) && (y > 0 && y < 7)) {
+  if ((x >= 0 && x <= 7) && (y >= 0 && y <= 7)) {
     return true
   }
   return false
@@ -57,6 +57,16 @@ Board.prototype.isValidPos = function (pos) {
  * throwing an Error if the position is invalid.
  */
 Board.prototype.getPiece = function (pos) {
+  let x = pos[0]
+  let y = pos[1]
+
+  if (this.isValidPos(pos))  {
+      return this.grid[x][y];
+      debugger
+  }
+  else {
+    throw new Error("Not valid pos!")
+  };
 };
 
 /**
